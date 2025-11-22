@@ -210,9 +210,14 @@ function DLP:EDIT_MODE_LAYOUTS_UPDATED(bucketedArgs)
 end
 
 ---On talent spec changes, load the spec override layout or the default device layout if no override is set
----@param eventName string
----@param unitTarget UnitToken 
-function DLP:PLAYER_SPECIALIZATION_CHANGED(eventName, unitTarget)
+function DLP:PLAYER_SPECIALIZATION_CHANGED(bucketArgs)
+    local event
+    for k, v in pairs(bucketArgs) do
+        self:HandleSpecChange(k)
+    end
+end
+
+function DLP:HandleSpecChange(unitTarget)
     if unitTarget ~= "player" then
         return
     end
