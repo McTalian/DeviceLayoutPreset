@@ -21,12 +21,13 @@ jobs:
         with:
           flavor: retail
           ptr: true
+          beta: true
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GH_PAT }}
-          title: "build(toc): updates supported interface versions"
+          title: "build(toc): bump toc versions, please submit any bugs!"
           body: |
             ## Requirements
 
@@ -37,6 +38,6 @@ jobs:
 
             ----------------------------------------------------
             _This PR was automatically created to update the supported interface versions in DeviceLayoutPreset.toc._
-          commit-message: "build(toc): updates supported interface versions"
+          commit-message: "build(toc): bump toc versions, please submit any bugs!"
           branch: interface-version
           delete-branch: true
